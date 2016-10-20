@@ -16,11 +16,13 @@ def fix_digit(x):
         return x
 
 
-def read_excel(fname, skiprows=0, header=None):
+def read_excel(fname, header=None):
     """Read excel into dict.
     Args:
         fname: name of excel file
-        skip_rows: If any rows should be skipped
+        header: The finland files does not have a header
+    Output:
+        dictionary containing the data
     """
     xls = ExcelFile(fname)
     if header:
@@ -47,8 +49,7 @@ class NordPool():
     """Class for getting the data from NordPool.
 
     Args:
-        user: User to login at NordPool
-        passwd: password for NordPool
+        date: A datetime object with the date to fetch
     """
 
     def __init__(self, date):
@@ -83,7 +84,11 @@ class NordPool():
         x[code][key] = map(int, filter(lambda val: val != "", data))
 
     def read_data_from_ftp(self, user, passwd):
-        """Function to read in the data from NordPool"""
+        """Function to read in the data from NordPool
+        Args:
+            user: The user name for the server
+            passwd: The password for the server
+        """
         ftp = FTP("ftp.nordpoolspot.com")
 
         ftp.login(user=user, passwd=passwd)
@@ -100,7 +105,6 @@ class NordPool():
         else:
             year_str = str(self.date.year)
 
-        
         week_day = str(self.date.weekday()+1)
 
         week_str = fix_digit(str(week))
@@ -151,19 +155,19 @@ class NordPool():
             se_ex: Excel file containing Sweden's exchange data
             fi_ex: Excel file containing Finland's exchange data
         """
-        self.data["NO"]["PS"] = read_excel(no_prod, skiprows=1)
-        self.data["SE"]["PS"] = read_excel(se_prod, skiprows=1)
-        self.data["FI"]["PS"] = read_excel(fi_prod, skiprows=1,
+        self.data["NO"]["PS"] = read_excel(no_prod)
+        self.data["SE"]["PS"] = read_excel(se_prod)
+        self.data["FI"]["PS"] = read_excel(fi_prod,
                                            header="FI")
 
-        self.data["NO"]["FB"] = read_excel(no_con, skiprows=1)
-        self.data["SE"]["FB"] = read_excel(se_con, skiprows=1)
-        self.data["FI"]["FB"] = read_excel(fi_con, skiprows=1,
+        self.data["NO"]["FB"] = read_excel(no_con)
+        self.data["SE"]["FB"] = read_excel(se_con)
+        self.data["FI"]["FB"] = read_excel(fi_con,
                                            header="FI")
 
-        self.data["NO"]["UT"] = read_excel(no_ex, skiprows=1)
-        self.data["SE"]["UT"] = read_excel(se_ex, skiprows=1)
-        self.data["FI"]["UT"] = read_excel(fi_ex, skiprows=1)
+        self.data["NO"]["UT"] = read_excel(no_ex)
+        self.data["SE"]["UT"] = read_excel(se_ex)
+        self.data["FI"]["UT"] = read_excel(fi_ex)
 
     def write_data_to_excel(self):
         """Write the data to excel in the iTesla format."""

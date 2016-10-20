@@ -27,10 +27,9 @@ class N44(object):
             cwd = os.path.dirname(os.path.abspath(__file__))
             encoding = sys.getfilesystemencoding()
             self.basecase = os.path.join(
-                                         cwd.encode(encoding),
-                                         "models",
-                                         "N44_BC.sav")
-            print(self.basecase)
+                cwd.encode(encoding),
+                "models",
+                "N44_BC.sav")
         else:
             self.basecase = basecase
 
@@ -104,6 +103,7 @@ class N44(object):
         """Function for updating the psse case file.
         Args:
             to_excel(default=True): If a summary should be written to excel
+            out_dir: The directory where the results are stored
         """
         if not out_dir:
             out_dir = os.getcwd()
@@ -183,19 +183,19 @@ class N44(object):
                                            end_row=1, end_column=col+2)
 
                     self.sheet.cell(row=2, column=col).alignment = (
-                                    Alignment(wrapText=True))
+                        Alignment(wrapText=True))
                     self.sheet.cell(row=2, column=col+1).alignment = (
-                                    Alignment(wrapText=True))
+                        Alignment(wrapText=True))
                     self.sheet.cell(row=2, column=col+2).alignment = (
-                                    Alignment(wrapText=True))
+                        Alignment(wrapText=True))
                     self.sheet.cell(row=14, column=col).alignment = (
-                                    Alignment(wrapText=True))
+                        Alignment(wrapText=True))
                     self.sheet.cell(row=14, column=col+1).alignment = (
-                                    Alignment(wrapText=True))
+                        Alignment(wrapText=True))
                     self.sheet.cell(row=30, column=col).alignment = (
-                                    Alignment(wrapText=True))
+                        Alignment(wrapText=True))
                     self.sheet.cell(row=30, column=col+1).alignment = (
-                                    Alignment(wrapText=True))
+                        Alignment(wrapText=True))
 
                     # Headers for data from nordpool
                     self.sheet.cell(row=1, column=col).value = (
@@ -209,17 +209,17 @@ class N44(object):
 
                     # Headers for exchanges represented as loads
                     self.sheet.cell(row=14, column=col).value = (
-                                    'Active Power\n[MW]')
+                        'Active Power\n[MW]')
                     self.sheet.cell(row=14, column=col+1).value = (
-                                    'Reactive Power\n[MW]')
+                        'Reactive Power\n[MW]')
 
                     # Headers for results after PSS/E
                     self.sheet.cell(row=30, column=col).value = (
-                                'PSSE\nProduction\n[MWh]')
+                        'PSSE\nProduction\n[MWh]')
                     self.sheet.cell(row=30, column=col+1).value = (
-                                'PSSE\nConsumption\n[MWh]')
+                        'PSSE\nConsumption\n[MWh]')
                     self.sheet.cell(row=30, column=col+2).value = (
-                                'PSSE\nExchange\n[MWh]')
+                        'PSSE\nExchange\n[MWh]')
 
                     row = 31
                     for _, info in self.area_info.items():
@@ -256,14 +256,14 @@ class N44(object):
                     ierr, machMbase = psspy.amachreal(sid=-1, string="MBASE")
                     for l in range(0, len(machPGen[0])):
                         if (machPGen[0][l] <= machPMin[0][l] or
-                           machPGen[0][l] >= machPMax[0][l]):
+                                machPGen[0][l] >= machPMax[0][l]):
                             self.sheet.cell(
                                 row=45,
                                 column=col).value = (
                                     'Generator active power output problem')
                 for m in range(0, len(machQGen[0])):
                     if (machQGen[0][m] <= machQMin[0][m] or
-                       machQGen[0][m] >= machQMax[0][m]):
+                            machQGen[0][m] >= machQMax[0][m]):
                         self.sheet.cell(row=46, column=col).value = (
                             'Generator reactive power output problem')
                         break
@@ -330,7 +330,7 @@ class N44(object):
         try:
             realar = -self.data[country]["UT"][load.areas][hour]
         except IndexError:
-            realar = 0    
+            realar = 0
             warnings.warn("Missing data filling in zero")
             with open("warnings.txt", "a") as warn:
                 warn.write("Missing data for " +
@@ -340,7 +340,7 @@ class N44(object):
             # Sweden hack
             temp = load.area + load.areas[2:]
             realar = -self.data[country]["UT"][temp][hour]
-                        
+
         realar2 = round(realar*math.tan(math.acos(load.pf)), tol)
 
         # Update the load
