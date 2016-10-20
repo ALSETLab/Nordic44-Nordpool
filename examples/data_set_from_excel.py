@@ -17,10 +17,7 @@ cwd = os.path.dirname(os.path.abspath(__file__))
 
 # Find excel files
 files_path = os.path.join(
-    cwd.encode(encoding), "..", "01_PSSE_Resources",
-    "Snapshots", "N44_20150101")
-
-basecase = os.path.normpath(basecase)
+    cwd.encode(encoding), "N44_20150101")
 
 no_prod = os.path.join(files_path, "Production_NO.xlsx")
 no_con = os.path.join(files_path, "Consumption_NO.xlsx")
