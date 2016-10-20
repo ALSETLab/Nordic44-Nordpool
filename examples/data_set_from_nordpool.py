@@ -1,18 +1,17 @@
-"""Script to update cases using NordPool data."""
+"""Script to generate one case using NordPool data."""
 import os
 import sys
 from datetime import date
-from datetime import timedelta
-from nordpool import NordPool
+from nordic44.nordpool import NordPool
 
-# PSSE = "C:\Program Files (x86)\PTI\PSSE33\PSSBIN"
-# sys.path.append(PSSE)
-# os.environ["PATH"] += ";" + PSSE
+PSSE = "C:\Program Files (x86)\PTI\PSSE33\PSSBIN"
+sys.path.append(PSSE)
+os.environ["PATH"] += ";" + PSSE
 
-# from n44 import N44
+from nordic44.n44 import N44
 
 user = "NTNU"
-passwd = ""
+passwd = "qhvi779"
 
 # Find current directory
 encoding = sys.getfilesystemencoding()
@@ -20,32 +19,15 @@ cwd = os.path.dirname(os.path.abspath(__file__))
 
 # Location of basecase file
 basecase = os.path.join(
-    cwd.encode(encoding), "..", "01_PSSE_Resources",
-    "Models", "PSSE Base case",
+    cwd.encode(encoding), "..", "models",
     "N44_BC.sav")
 
 basecase = os.path.normpath(basecase)
 
-start_date = date(2016, 1, 1)
-end_date = date(2016, 10, 15)
+nord = NordPool(date(2016, 3, 4))
 
-for i in range((end_date-start_date).days + 1):
-    date = start_date + timedelta(i)
-    date_str = date.strftime("%Y%m%d")
+nord.read_data_from_ftp(user, passwd)
+nord.write_data_to_excel()
 
-    dir_str = "N44_" + date_str
-    
-    try:
-        os.makedirs(dir_str)
-    except OSError:
-        pass
-    os.chdir(dir_str)
-
-    nord = NordPool(date)
-
-    nord.read_data_from_ftp(user, passwd)
-    nord.write_data_to_excel()
-
-    # n44 = N44(nord.data, basecase)
-    # n44.update_raw_files()
-    # os.chdir("..")
+n44 = N44(nord.data, basecase)
+n44.update_raw_files()
