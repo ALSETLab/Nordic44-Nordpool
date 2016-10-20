@@ -1,2 +1,3 @@
 recursive-include nordic44/models *
 recursive-include examples/N44_20150101 *
+recursive-include bin/ *
