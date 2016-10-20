@@ -13,17 +13,6 @@ from nordic44.n44 import N44
 user = "NTNU"
 passwd = ""
 
-# Find current directory
-encoding = sys.getfilesystemencoding()
-cwd = os.path.dirname(os.path.abspath(__file__))
-
-# Location of basecase file
-basecase = os.path.join(
-    cwd.encode(encoding), "..", "models",
-    "N44_BC.sav")
-
-basecase = os.path.normpath(basecase)
-
 nord = NordPool(date(2016, 3, 4))
 
 nord.read_data_from_ftp(user, passwd)
