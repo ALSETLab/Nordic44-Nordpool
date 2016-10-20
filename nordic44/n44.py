@@ -100,11 +100,14 @@ class N44(object):
                        pos=[],
                        neg=["FI_SE1"]))])
 
-    def update_raw_files(self, to_excel=True):
+    def update_raw_files(self, to_excel=True, out_dir=None):
         """Function for updating the psse case file.
         Args:
             to_excel(default=True): If a summary should be written to excel
         """
+        if not out_dir:
+            out_dir = os.getcwd()
+
         redirect.psse2py()
         psspy.throwPsseExceptions = True
         nbuses = 50000  # max no of buses
@@ -161,15 +164,18 @@ class N44(object):
                 print('Convergence')
                 if self.to_excel:
                     self.sheet.cell(row=42, column=col).value = 'Convergence'
+                
+                temp_fname = os.path.join(out_dir, "temp.sav")
 
-                psspy.save('temp.sav')  # save temporarily the solved case
-                psspy.case('temp.sav')  # set the saved case as current case
+                psspy.save(temp_fname)  # save temporarily the solved case
+                psspy.case(temp_fname)  # set the saved case as current case
 
                 # save the raw file to convert to CIM
+                raw_fname = os.path.join(out_dir, "Snap_after_PF.raw")
                 psspy.rawd_2(0, 1, [0, 0, 1, 0, 0, 0, 0], 0,
-                             "Snap_after_PF.raw")
-                b = 'h' + str(i) + '_after_PF.raw'
-                os.rename("Snap_after_PF.raw", b)
+                             raw_fname)
+                b = os.path.join(out_dir, 'h' + str(i) + '_after_PF.raw')
+                os.rename(raw_fname, b)
 
                 if self.to_excel:
                     # Merge cells
@@ -285,8 +291,8 @@ class N44(object):
         psspy.close_powerflow()
 
         # save the Excel file with all data
-        self.wb.save('PSSE_in_out.xlsx')
-        os.remove("temp.sav")
+        self.wb.save(os.path.join(out_dir, 'PSSE_in_out.xlsx'))
+        os.remove(temp_fname)
 
     def change_prod_con(self, areas, prod, con, pf, tol=4,
                         row=None, column=None):
