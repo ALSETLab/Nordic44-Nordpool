@@ -1,5 +1,6 @@
 """Functions for updating the PSS/E data sets."""
 import os
+import sys
 import math
 import warnings
 import psspy
@@ -20,9 +21,18 @@ class N44(object):
         basecase: name of the PSS/E base case
         data: Nordpool data dictionary
     """
-    def __init__(self, data, basecase):
+    def __init__(self, data, basecase=None):
         self.data = data
-        self.basecase = basecase
+        if not basecase:
+            cwd = os.path.dirname(os.path.abspath(__file__))
+            encoding = sys.getfilesystemencoding()
+            self.basecase = os.path.join(
+                                         cwd.encode(encoding),
+                                         "models",
+                                         "N44_BC.sav")
+            print(self.basecase)
+        else:
+            self.basecase = basecase
 
         self.wb = None
         self.sheet = None

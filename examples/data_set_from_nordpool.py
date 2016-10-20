@@ -11,7 +11,7 @@ os.environ["PATH"] += ";" + PSSE
 from nordic44.n44 import N44
 
 user = "NTNU"
-passwd = "qhvi779"
+passwd = ""
 
 # Find current directory
 encoding = sys.getfilesystemencoding()
@@ -29,5 +29,5 @@ nord = NordPool(date(2016, 3, 4))
 nord.read_data_from_ftp(user, passwd)
 nord.write_data_to_excel()
 
-n44 = N44(nord.data, basecase)
+n44 = N44(nord.data)
 n44.update_raw_files()
