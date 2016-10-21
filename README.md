@@ -23,7 +23,7 @@ This work was originally developed in the context of the FP7 [iTesla project](ht
 ## Installation of the repository
 
 The content of the repository can be installed using the following command:
-python setup.py install
+ >python setup.py install
 
 ## Structure of the repository
 
