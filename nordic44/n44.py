@@ -166,6 +166,7 @@ class N44(object):
                     self.sheet.cell(row=42, column=col).value = 'Convergence'
                 
                 temp_fname = os.path.join(out_dir, "temp.sav")
+                print(temp_fname)
 
                 psspy.save(temp_fname)  # save temporarily the solved case
                 psspy.case(temp_fname)  # set the saved case as current case
