@@ -3,17 +3,17 @@ import os
 import sys
 from datetime import date
 
-PSSE = "C:\Program Files (x86)\PTI\PSSE33\PSSBIN"
+PSSE = r"C:\Program Files (x86)\PTI\PSSE33\PSSBIN"
 sys.path.append(PSSE)
 os.environ["PATH"] += ";" + PSSE
 
 from nordic44 import utilities
 
-user = "NTNU"
-passwd = "qhvi779"
+user = ""
+passwd = ""
 
 start_date = date(2016, 1, 1)
 end_date = date(2016, 1, 2)
 
-utilities.data_from_nordpool(start_date=start_date, user=user, passwd=passwd, 
-                           end_date=end_date, records=True)
+utilities.data_from_nordpool(start_date=start_date, user=user, passwd=passwd,
+                             end_date=end_date, records=True)
