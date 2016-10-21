@@ -61,7 +61,7 @@ def main(argv):
         try:
             os.makedirs(dir_str)
         except OSError:
-            pass
+            raise OSError
         os.chdir(dir_str)
 
         nord = NordPool(date)
