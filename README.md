@@ -24,12 +24,20 @@ This work was originally developed in the context of the FP7 [iTesla project](ht
 
 The repository is organised as follows:
 
-- Examples:
 - nordic44:
- 1. *Nordic44.py* is the Python script used to create the snapshots included in the folders at **01_PSSE_Resources/Snapshots**
+ 1. *n44.py* contains the Python class responsible for the mapping between Nord Pool data and the Nordic 44 PSS/E base case contained in the folder models
+ 
+ 2. *nordpool.py* contains the Python class responsible for reading in Nord Pool market data to a dictionary. It supports to read in from both the ftp server and from excel files.
+ 
+ 3. *readraw.py* contains the Python class responsible for reading in a Nordic 44 case from a raw file to Python dictionaries
+ 
+ 4. *torecord.py* contains the Python class responsible for writing a Nordic 44 case contained in Python dictionaries to modelica records.
+ 
+ 5. *utilities.py* contaings utility functions. Most notibly is the function data_from_nordpool which can download market data from the Nord Pool ftp server and store it to, excel, raw files, and records.
 
- 2. *PSSE_to_CIM14_batch.py* is the Python script used for converting PSS/E files to CIM v14 files
-
+ 4. *PSSE_to_CIM14_batch.py* is the Python script used for converting PSS/E files to CIM v14 files
+ 
+ - Examples:
 
 
 ## External Resources
