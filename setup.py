@@ -8,4 +8,4 @@ setup(name="Nordic44",
       packages=["nordic44"],
       package_data={"nordic44": ["models/*sav"]},
       include_package_data=True,
-      scripts=['bin/data_from_nordpool.py'],)
+      scripts=['bin/nordic44_script.py'],)
