@@ -120,7 +120,7 @@ class N44(object):
         else:
             self.sheet = None
 
-        for i, col in zip(range(0, 23),
+        for i, col in zip(range(0, 24),
                           range(2, 2+24*3, 3)):
             # Represent HVDC links as load and some other exchanges as well
             print('Changing additional loads...')
