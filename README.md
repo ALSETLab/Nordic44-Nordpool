@@ -20,15 +20,42 @@ We are happy to contribute with this repository, however, if you use any of the 
 
 This work was originally developed in the context of the FP7 [iTesla project](http://www.itesla-project.eu/), and further extended within the ITEA3 [openCPS](https://itea3.org/project/opencps.html) project.
 
+## Installation of the repository
+
+The content of the repository can be installed using the following commands:
+
+ clone the repository:
+  > git clone git@github.com:SmarTS-Lab/Nordic44-Nordpool.git
+  
+ install the scripts:
+  >python setup.py install
+
 ## Structure of the repository
 
 The repository is organised as follows:
 
-- Examples:
 - nordic44:
- 1. *Nordic44.py* is the Python script used to create the snapshots included in the folders at **01_PSSE_Resources/Snapshots**
+ 1. *n44.py* contains the Python class responsible for the mapping between Nord Pool data and the Nordic 44 PSS/E base case contained in the folder models
+ 
+ 2. *nordpool.py* contains the Python class responsible for reading in Nord Pool market data to a dictionary. It supports to read in from both the ftp server and from excel files.
+ 
+ 3. *readraw.py* contains the Python class responsible for reading in a Nordic 44 case from a raw file to Python dictionaries
+ 
+ 4. *torecord.py* contains the Python class responsible for writing a Nordic 44 case contained in Python dictionaries to modelica records.
+ 
+ 5. *utilities.py* contains utility functions. Most notibly is the function data_from_nordpool which can download market data from the Nord Pool ftp server and store it to, excel, raw files, and records.
 
- 2. *PSSE_to_CIM14_batch.py* is the Python script used for converting PSS/E files to CIM v14 files
+ 4. *PSSE_to_CIM14_batch.py* is the Python script used for converting PSS/E files to CIM v14 files
+ 
+- examples:
+ 1. *data_set_from_excel.py*  example demonstrating how excel files can be read into Python and used to create raw PSS/E cases from the market data.
+ 
+ 2. *data_set_from_excel.py* example demonstrating how one can download market data from the Nord Pool ftp server and construct PSSE/cases.
+ 
+ 3. *multiple_data_sets_from_nordpool.py* example demonstrating how the utility function *data_from_nordpool* can be used to download multiple data sets from the ftp server and stored to both raw files and modelica records.
+ 
+- bin:
+ 1. *nordic44_script.py* Wrapper for the command line. When installing the repository "using python setup.py install" this script should be put in a folder for executables allowing one to construct datasets directly from the command line without invoking the Python interpreter.
 
 
 

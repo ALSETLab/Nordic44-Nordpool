@@ -2,12 +2,10 @@
 import os
 from datetime import timedelta
 from nordic44.nordpool import NordPool
-from nordic44.readraw import Reader
-from nordic44.torecord import Record
 
 
 def data_from_nordpool(start_date, user, passwd, out_dir=None, end_date=None,
-                       records=False, psse= True):
+                       records=False, psse=True):
     """The main function."""
     if not end_date:
         end_date = start_date
@@ -34,12 +32,15 @@ def data_from_nordpool(start_date, user, passwd, out_dir=None, end_date=None,
         nord.read_data_from_ftp(user, passwd)
         nord.write_data_to_excel()
 
+        # I know there should be no imports here,
+        # but it is a simple hack to run under linux
         if psse:
             from nordic44.n44 import N44
             n44 = N44(nord.data)
             n44.update_raw_files(out_dir=dir_str)
-                       
             if records:
+                from nordic44.readraw import Reader
+                from nordic44.torecord import Record
                 record_dir = os.path.join(dir_str, "records")
                 try:
                     os.makedirs(record_dir)
@@ -48,8 +49,6 @@ def data_from_nordpool(start_date, user, passwd, out_dir=None, end_date=None,
                 reader = Reader(dir_str)
 
                 lista = reader.get_list_of_raw_files()
-                print ("Liste")
-                print(len(lista))
                 for raw in lista:
                     reader.open_raw(raw)
                     reader.read_raw()
@@ -62,6 +61,6 @@ def data_from_nordpool(start_date, user, passwd, out_dir=None, end_date=None,
                     record.write_machines()
                     record.write_loads()
                     record.write_trafos()
-            
+
             os.chdir("..")
     os.chdir(cwd)
