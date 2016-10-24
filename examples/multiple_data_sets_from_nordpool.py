@@ -13,7 +13,7 @@ user = ""
 passwd = ""
 
 start_date = date(2016, 1, 1)
-end_date = date(2016, 1, 2)
+end_date = date(2016, 10, 15)
 
 utilities.data_from_nordpool(start_date=start_date, user=user, passwd=passwd,
                              end_date=end_date, records=True)
