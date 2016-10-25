@@ -34,22 +34,23 @@ class Reader():
         Creates a list of available raw files
         '''
         if os.path.isdir(self.raw_file_dir):
-            print(self.raw_file_dir)
-            for i in os.listdir(self.raw_file_dir):
-                if i.endswith(".raw"):
-                    self.rawfilelist.append(i)
-
+            for root, dirs, files in os.walk(self.raw_file_dir):
+                for name in files:
+                    if name.endswith(".raw"):
+                        self.rawfilelist.append(os.path.join(root, name))
         else:
             self.rawfilelist.append(self.raw_file_dir)
         return self.rawfilelist
 
     def open_raw(self, filepath):
         '''
-        Reads and opens a raw file
+        Opens a raw file in PSS/E
+        Runs a power flow
         '''
         ierr = psspy.readrawversion(0, '33.0', filepath)
         (_, fname) = os.path.split(filepath)
         self.case_name = fname[:-4]
+        psspy.fnsl([1, 2, 0, 0, 1, 0, 0, 0])
 
         assert ierr == 0, 'Raw file cannot be opened'
 
