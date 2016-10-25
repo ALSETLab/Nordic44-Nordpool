@@ -9,8 +9,8 @@ os.environ["PATH"] += ";" + PSSE
 
 from nordic44 import utilities
 
-user = ""
-passwd = ""
+user = "NTNU"
+passwd = "qhvi779"
 
 start_date = date(2016, 1, 1)
 end_date = date(2016, 10, 15)
