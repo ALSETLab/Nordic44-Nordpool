@@ -86,7 +86,7 @@ class Reader():
         ierr1, [machine_power_p] = psspy.amachreal(-1, 4, 'PGEN')
         ierr2, [machine_power_q] = psspy.amachreal(-1, 4, 'QGEN')
 
-        assert (ierr1 == 0) and (ierr2 == 0), 'Error with reading active and reactive powers'
+        assert ierr1 == 0 and ierr2 == 0, 'Error with reading active and reactive powers'
 
         # Creates a Python dictionary containing keys in form of
         # "BUSNUMBER_MACHINEID" and associates a dictionary with active and
@@ -124,13 +124,13 @@ class Reader():
         ierr1, [two_w_trafo_from] = psspy.atrnint(-1, 1, 1, 2, 1, 'FROMNUMBER')
         ierr2, [two_w_trafo_to] = psspy.atrnint(-1, 1, 1, 2, 1, 'TONUMBER')
 
-        assert (ierr1 == 0) and (ierr2 == 0), 'Error reading trafo bus numbers'
+        assert ierr1 == 0 and ierr2 == 0, 'Error reading trafo bus numbers'
 
         # Reads and stores 2WindingTrafo ratios taking into account the primary side
         ierr1, [two_w_trafo_ratio1] = psspy.atrnreal(-1, 1, 1, 2, 1, 'RATIO')
         ierr2, [two_w_trafo_ratio2] = psspy.atrnreal(-1, 1, 1, 2, 1, 'RATIO2')
 
-        assert (ierr1 == 0) and (ierr2 == 0), 'Error reading trafo bus numbers'
+        assert ierr1 == 0 and ierr2 == 0, 'Error reading trafo bus numbers'
 
         # Creates a Python dictionary containing keys in form of
         # "BUSNUMBER_LOADID" and associates a dictionary with active and

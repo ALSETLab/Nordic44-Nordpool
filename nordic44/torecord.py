@@ -17,7 +17,7 @@ class Record():
         self.loads = loads
         self.trafos = trafos
         self.case_name = case_name
-        assert (os.path.isfile(raw_file_path))
+        assert os.path.isfile(raw_file_path)
         self.record_path = workdir
         if not os.access(self.record_path, os.F_OK):
             os.mkdir(self.record_path)
