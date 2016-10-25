@@ -61,6 +61,7 @@ def data_from_nordpool(start_date, user, passwd, out_dir=None, end_date=None,
                     record.write_machines()
                     record.write_loads()
                     record.write_trafos()
+                    record.close_record()
 
             os.chdir("..")
     os.chdir(cwd)

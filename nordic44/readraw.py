@@ -34,18 +34,17 @@ class Reader():
         Creates a list of available raw files
         '''
         if os.path.isdir(self.raw_file_dir):
-            print(self.raw_file_dir)
-            for i in os.listdir(self.raw_file_dir):
-                if i.endswith(".raw"):
-                    self.rawfilelist.append(i)
-
+            for root, dirs, files in os.walk(self.raw_file_dir):
+                for name in files:
+                    if name.endswith(".raw"):
+                        self.rawfilelist.append(os.path.join(root, name))
         else:
             self.rawfilelist.append(self.raw_file_dir)
         return self.rawfilelist
 
     def open_raw(self, filepath):
         '''
-        Reads and opens a raw file
+        Opens a raw file in PSS/E
         '''
         ierr = psspy.readrawversion(0, '33.0', filepath)
         (_, fname) = os.path.split(filepath)
@@ -85,7 +84,7 @@ class Reader():
         ierr1, [machine_power_p] = psspy.amachreal(-1, 4, 'PGEN')
         ierr2, [machine_power_q] = psspy.amachreal(-1, 4, 'QGEN')
 
-        assert (ierr1 == 0) and (ierr2 == 0), 'Error with reading active and reactive powers'
+        assert ierr1 == 0 and ierr2 == 0, 'Error with reading active and reactive powers'
 
         # Creates a Python dictionary containing keys in form of
         # "BUSNUMBER_MACHINEID" and associates a dictionary with active and
@@ -123,13 +122,13 @@ class Reader():
         ierr1, [two_w_trafo_from] = psspy.atrnint(-1, 1, 1, 2, 1, 'FROMNUMBER')
         ierr2, [two_w_trafo_to] = psspy.atrnint(-1, 1, 1, 2, 1, 'TONUMBER')
 
-        assert (ierr1 == 0) and (ierr2 == 0), 'Error reading trafo bus numbers'
+        assert ierr1 == 0 and ierr2 == 0, 'Error reading trafo bus numbers'
 
         # Reads and stores 2WindingTrafo ratios taking into account the primary side
         ierr1, [two_w_trafo_ratio1] = psspy.atrnreal(-1, 1, 1, 2, 1, 'RATIO')
         ierr2, [two_w_trafo_ratio2] = psspy.atrnreal(-1, 1, 1, 2, 1, 'RATIO2')
 
-        assert (ierr1 == 0) and (ierr2 == 0), 'Error reading trafo bus numbers'
+        assert ierr1 == 0 and ierr2 == 0, 'Error reading trafo bus numbers'
 
         # Creates a Python dictionary containing keys in form of
         # "BUSNUMBER_LOADID" and associates a dictionary with active and
