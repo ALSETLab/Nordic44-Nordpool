@@ -4,7 +4,7 @@ import os
 class Record():
     '''Class defining how Modelica record file is created.'''
 
-    def __init__(self, workdir, raw_file_path, case_name, buses, machines, loads, trafos):
+    def __init__(self, workdir, case_name, buses, machines, loads, trafos):
         '''
         Constructor:
             - Store dictionary of buses
@@ -17,7 +17,6 @@ class Record():
         self.loads = loads
         self.trafos = trafos
         self.case_name = case_name
-        assert os.path.isfile(raw_file_path)
         self.record_path = workdir
         if not os.access(self.record_path, os.F_OK):
             os.mkdir(self.record_path)

@@ -155,7 +155,7 @@ class N44(object):
             print('Changes completed...')
             # Save the raw file to convert to CIM
             psspy.rawd_2(0, 1, [0, 0, 1, 0, 0, 0, 0], 0, "Snap_before_PF.raw")
-            b = 'h' + str((col-1)/3) + '_before_PF.raw'
+            b = os.path.join(out_dir, 'h' + str((col-1)/3) + '_before_PF.raw')
             os.rename("Snap_before_PF.raw", b)
             # Solve the power flow
             psspy.fnsl([1, 2, 0, 0, 1, 0, 0, 0])

@@ -1,4 +1,5 @@
 """Module for getting data from nordpool."""
+import os
 from ftplib import FTP
 from openpyxl import Workbook
 from pandas import ExcelFile
@@ -169,10 +170,12 @@ class NordPool():
         self.data["SE"]["UT"] = read_excel(se_ex)
         self.data["FI"]["UT"] = read_excel(fi_ex)
 
-    def write_data_to_excel(self):
+    def write_data_to_excel(self, out_dir=None):
         """Write the data to excel in the iTesla format."""
         fnames = ["Procution", "Consumption", "Exchange"]
         country_codes = ["NO", "SE", "FI"]
+        if not out_dir:
+            out_dir = os.getcwd()
         for cc, country in zip(country_codes, self.countries):
             temp = getattr(self, country)
             for code, name in zip(self.code, fnames):
@@ -203,4 +206,4 @@ class NordPool():
                         row = row + 1
                     column = column + 1
                     row = 3
-                wb.save(name + "_" + cc + ".xlsx")
+                wb.save(os.path.join(out_dir, name + "_" + cc + ".xlsx"))
