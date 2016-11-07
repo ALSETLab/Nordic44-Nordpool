@@ -78,60 +78,30 @@ The script generates data record containing the power flow solution to be used i
 - PSS/E case files:  
 Running the simulation for the generated files requires [PSS/E](http://w3.siemens.com/smartgrid/global/en/products-systems-solutions/software-solutions/planning-data-management-software/planning-simulation/Pages/PSS-E.aspx) (additional license required).
 
+## Copyright Statement
+Nordic44-Nordpool: A toolbox to extract powerflow data from Nordpool and prepare it for the SmarTS Lab N44 model.
 
+Copyright (C) 2016 The authors:
+- Luigi Vanfretti,
+- Svein H Olsen,
+- V. S. Narasimham Arava,
+- Giuseppe Laera,
+- Ali Bidadfar,
+- Tin Rabuzin
+- Sigurd H Jakobsen,
+- Jan Lavenius,
+- Maxime Baudette,
+- Francisco J. Gómez López
 
-## Script documentation
-This Section documents the input(s) and output(s) for each of the scripts available here.
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
 
-
-----------------------------------------
-FIX BELOW
-----------------------------------------
-
-
-
-### __00_Documentation__:
-
-  1. __N44_changes.docx__ is a file describing the modifications applied to PSS/E Original case for setting up the PSS/E base case
-
-  2. __N44_presentation.pptx__
-
-### __01_PSSE_Resources__:
-  1. __Models__ :
-
-    * A folder with PSS/E files of the base case
-
-    * A folder with a 7zip archive containing files of the original N44 system that has been modified to have the PSS/E base case
-
-  2. __Snapshots__ :
-    * **N44_2015xxxx** are folders named according to the day they refer to (for example _N44_20150401_ refers to the 1st of April 2015). In each folder there are Excel files (*Consumption_xx.xlsx*, *Exchange_xx.xlsx*, *Production_xx.xlsx*) with data downloaded from , an Excel file (*PSSE\_in\_out.xlsx*) summarizing the results from the Python script *Nordic44.py* in the folder **04_Python_Resources**, PSS/E snapshots for each hour before solving the power flow (*hx\_before\_PF.raw*) and after solving the power flow (*hx\_after\_PF.raw*)
-
-    * *N44_BC.sav* is the PSS/E solved base case that Python script *Nordic44.py* (put the reference)
-
-### __02_CIM14_Snapshots__:
-  * **N44_2015xxxx** are folders named according to the day they refer to (e.g. **N44_20150401** refers to the 1st of April 2015). In each folder there are CIM files for each hour (*N44\_hx\_EQ.xml*, *N44\_hx\_SV.xml_, _N44\_hx\_TP.xml*)
-
-  * **N44_noOL_RDFIDMAP.xml** is the file with IDs mapping of those cases (*N44_hx_noOL_EQ.xml*, *N44_hx_noOL_SV.xml*, *N44_hx_noOL_TP.xml*) with fixed overloading problems.
-
-  * **N44_RDFIDMAP_2015-1.xml** and **N44_RDFIDMAP_2015-2.xml**  are the files with IDs mapping of the remaining snapshots from 2015
-
-### __03_Modelica__:
-
-  1. __iTesla_Platform__
-
-    * **[iPSL](https://github.com/tinrabuzin/ipsl)** folder contains the version of the library which can be used to simulate snapshots generated from the iTesla Platform
-
-    * **Modelica_snapshots** Modelica models generated from the snapshots by iTesla Platform
-
-  2. __SmarTSLab__
-
-    * **[OpenIPSL](https://github.com/SmarTS-Lab/OpenIPSL)** folder contains the version of the forked iPSL library which can be used to simulate the manually generated Modelica model of N44 with the record structures corresponding to the snapshots
-
-    * **[Raw2Record](https://github.com/SmarTS-Lab/Raw2Record)** is a Python script which generates the Modelica records from the PSS/E snapshots
-
-    * **Snapshots** folder contains Modelica records automatically generated from the PSS/E records
-
-    * *N44_Base_Case.mo* is the handmade N44 model with the loaded record of the power flow results from the PSS/E base case. It can be used to load other PF results from the folder **03_Modelica/Snapshots**
-
-### __04_Python_Resources__:
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
