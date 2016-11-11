@@ -15,7 +15,7 @@ We are happy to contribute with this repository, however, if you use any of the 
 2. Cite that the first appearance of the model, i.e. `the model is first presented in [Ref01]`
 
 
-- [Ref00] L. Vanfretti, S.H. Olsen, V.S.N. Arava, G. Laera, A. Bidadfar, T. Rabuzin, S.H. Jackobsen, J. Lavenius, M. Baudette, and F.J. Gomez Lopez "An Open Data Repository and a Data Processing Software Toolset of an Equivalent Nordic Grid Model Matched to Historical Electricity Market Data," submitted for publication, Data in Brief, 2016.[Link](https://github.com/SmarTS-Lab/Nordic44-Nordpool/releases/download/v1.0.0/DIB.Article.preprint.pdf)
+- [Ref00] L. Vanfretti, S.H. Olsen, V.S.N. Arava, G. Laera, A. Bidadfar, T. Rabuzin, S.H. Jackobsen, J. Lavenius, M. Baudette, and F.J. Gomez Lopez "An Open Data Repository and a Data Processing Software Toolset of an Equivalent Nordic Grid Model Matched to Historical Electricity Market Data," submitted for publication, Data in Brief, 2016. Download the pre-print of the submitted paper from this [link](https://github.com/SmarTS-Lab/Nordic44-Nordpool/releases/download/v1.0.0/DIB.Article.preprint.pdf)
 
 - [Ref01] L. Vanfretti, T. Rabuzin, M. Baudette, M. Murad, iTesla Power Systems Library (iPSL): A Modelica library for phasor time-domain simulations, SoftwareX, Available online 18 May 2016, ISSN 2352-7110, http://dx.doi.org/10.1016/j.softx.2016.05.001.
 
