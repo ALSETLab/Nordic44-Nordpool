@@ -1,4 +1,4 @@
-# **Nordic44-Nordpool**: An Open Data Processing Software Toolset for an Equivalent Nordic Grid Model Matched to Historical Electricity Market Data
+# **Nordic44-Nordpool**: An Open Data Repository and a Data Processing Software Toolset for an Equivalent Nordic Grid Model Matched to Historical Electricity Market Data
 
 This repository gathers the python resources developed to fetch and process the NordPool market data to prepare case file in Modelica, CIM 14, and PSS/E.  
 The scripts in this repository have been used to generate case files for every hour of every day of 2015 and 2016.   
