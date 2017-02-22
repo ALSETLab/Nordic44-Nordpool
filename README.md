@@ -16,7 +16,8 @@ We are happy to contribute with this repository, however, if you use any of the 
 
 
 - [Ref00] L. Vanfretti, S.H. Olsen, V.S. Narasimham Arava, G. Laera, A. Bidadfar, T. Rabuzin, Sigurd H. Jakobsen, J. Lavenius, M. Baudette, F.J. Gómez-López, An open data repository and a data processing software toolset of an equivalent Nordic grid model matched to historical electricity market data, Data in Brief, Available online 13 February 2017, ISSN 2352-3409, [http://dx.doi.org/10.1016/j.dib.2017.02.021]
-(http://www.sciencedirect.com/science/article/pii/S2352340917300409). The final published article can be downloaded directly from the journal website, it is an open access journal.
+(http://www.sciencedirect.com/science/article/pii/S2352340917300409). 
+The final published article can be downloaded directly from the journal website, it is an open access journal.
 
 - [Ref01] L. Vanfretti, T. Rabuzin, M. Baudette, M. Murad, iTesla Power Systems Library (iPSL): A Modelica library for phasor time-domain simulations, SoftwareX, Available online 18 May 2016, ISSN 2352-7110, http://dx.doi.org/10.1016/j.softx.2016.05.001.
 
