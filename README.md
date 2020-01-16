@@ -1,7 +1,8 @@
-# **Nordic44-Nordpool**: An Open Data Repository and a Data Processing Software Toolset for an Equivalent Nordic Grid Model Matched to Historical Electricity Market Data
+# Nordic44-Nordpool:
+## An Open Data Repository and a Data Processing Software Toolset for an Equivalent Nordic Grid Model Matched to Historical Electricity Market Data
 
-This repository gathers the python resources developed to fetch and process the NordPool market data to prepare case file in Modelica, CIM 14, and PSS/E.  
-The scripts in this repository have been used to generate case files for every hour of every day of 2015 and 2016.   
+This repository gathers the python resources developed to fetch and process the NordPool market data to prepare case file in Modelica, CIM 14, and PSS/E.
+The scripts in this repository have been used to generate case files for every hour of every day of 2015 and 2016.
 The generated datasets are available at:
 - 2015 data [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.162907.svg)](https://doi.org/10.5281/zenodo.162907)
 - 2016 data [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.162921.svg)](https://doi.org/10.5281/zenodo.162921)
@@ -11,12 +12,12 @@ The dataset generation is documented in the paper below, see [Ref00].
 ## Using this model, data or related software = cite our publications!
 We are happy to contribute with this repository, however, if you use any of the data or software provided, we will appreciate if you cite the following publications, as follows:
 
-1. Cite that `the raw and processed data files corresponding to the model are available as an open data set and documented in [Ref00].`
-2. Cite that the first appearance of the model, i.e. `the model is first presented in [Ref01]`
+1. Cite that `the raw and processed data files corresponding to the model are available as an open data set and documented in [Ref00]`.
+2. Cite that the first appearance of the model, i.e., `the model is first presented in [Ref01]`.
 
 
 - [Ref00] L. Vanfretti, S.H. Olsen, V.S. Narasimham Arava, G. Laera, A. Bidadfar, T. Rabuzin, Sigurd H. Jakobsen, J. Lavenius, M. Baudette, F.J. Gómez-López, An open data repository and a data processing software toolset of an equivalent Nordic grid model matched to historical electricity market data, Data in Brief, Available online 13 February 2017, ISSN 2352-3409, [http://dx.doi.org/10.1016/j.dib.2017.02.021]
-(http://www.sciencedirect.com/science/article/pii/S2352340917300409). 
+(http://www.sciencedirect.com/science/article/pii/S2352340917300409).
 The final published article can be downloaded directly from the journal website, it is an open access journal.
 
 - [Ref01] L. Vanfretti, T. Rabuzin, M. Baudette, M. Murad, iTesla Power Systems Library (iPSL): A Modelica library for phasor time-domain simulations, SoftwareX, Available online 18 May 2016, ISSN 2352-7110, http://dx.doi.org/10.1016/j.softx.2016.05.001.
@@ -30,10 +31,12 @@ This work was originally developed in the context of the FP7 [iTesla project](ht
 The content of the repository can be installed using the following commands:
 
  clone the repository:
-  > git clone git@github.com:SmarTS-Lab/Nordic44-Nordpool.git
+
+    git clone git@github.com:ALSETLab/Nordic44-Nordpool.git
 
  install the scripts:
-  >python setup.py install
+
+    python setup.py install
 
 ## Structure of the repository
 
@@ -65,23 +68,23 @@ The repository is organised as follows:
 
 
 ## External Resources
-The scripts available in this repository are used in an ecosystem build by several software component developed / used at SmarTS Lab.
-The goal is to generate case files with the powerflow solution matching the data available from the electricity market dispatch.   
+The scripts available in this repository are used in an ecosystem build by several software component developed / used at ALSETLab.
+The goal is to generate case files with the powerflow solution matching the data available from the electricity market dispatch.
 
-- Market data:  
+- Market data:
 The source data for building the case files is obtained directly from [Nord Pool](http://www.nordpoolspot.com/Market-data1/Power-system-data/Production1/Production1/ALL1/Hourly1/?view=table).
 - CIM profiles:
  - The generation of CIM profile requires [PSS ODMS](http://w3.siemens.com/smartgrid/global/en/products-systems-solutions/software-solutions/planning-data-management-software/model-data-management/pages/pss-odms.aspx) (additional license required)
  - CIM profiles can be used in any CIM-compliant software
-- Modelica:  
-The script generates data record containing the power flow solution to be used in combination with the SmarTS Lab Nordic44 model.
- - Running Modelica models requires a Modelica-compliant IDE (such as [OpenModelica](https://openmodelica.org/), [Dymola](http://www.modelon.com/products/dymola/))
- - The OpenIPSL and Nordic44 model are available in the [OpenIPSL repository](https://github.com/SmarTS-Lab/OpenIPSL)
-- PSS/E case files:  
+- Modelica:
+The script generates data record containing the power flow solution to be used in combination with the ALSETLab Nordic44 model.
+ - Running Modelica models requires a Modelica-compliant IDE (such as [OpenModelica](https://openmodelica.org/), [Dymola](http://www.dymola.com))
+ - The OpenIPSL and Nordic44 model are available in the [OpenIPSL repository](https://github.com/openipsl/OpenIPSL)
+- PSS/E case files:
 Running the simulation for the generated files requires [PSS/E](http://w3.siemens.com/smartgrid/global/en/products-systems-solutions/software-solutions/planning-data-management-software/planning-simulation/Pages/PSS-E.aspx) (additional license required).
 
 ## Copyright Statement
-Nordic44-Nordpool: A toolbox to extract powerflow data from Nordpool and prepare it for the SmarTS Lab N44 model.
+Nordic44-Nordpool: A toolbox to extract powerflow data from Nordpool and prepare it for the ALSETLab N44 model.
 
 Copyright (C) 2016 The authors:
 - Luigi Vanfretti,
