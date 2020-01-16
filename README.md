@@ -2,10 +2,9 @@
 ## An Open Data Repository and a Data Processing Software Toolset for an Equivalent Nordic Grid Model Matched to Historical Electricity Market Data
 
 This repository gathers the python resources developed to fetch and process the NordPool market data to prepare case file in Modelica, CIM 14, and PSS/E.
-The scripts in this repository have been used to generate case files for every hour of every day of 2015 and 2016.
+The scripts in this repository have been used to generate case files for every hour of every day of 2015.
 The generated datasets are available at:
 - 2015 data [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.162907.svg)](https://doi.org/10.5281/zenodo.162907)
-- 2016 data [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.162921.svg)](https://doi.org/10.5281/zenodo.162921)
 
 The dataset generation is documented in the paper below, see [Ref00].
 
